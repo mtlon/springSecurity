@@ -11,13 +11,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/students")
 public class StudentController {
-
     private final List<Student> STUDENTS = Arrays.asList(
             new Student(1, "Pam Beesly"),
             new Student(2, "Jim Halpert"),
             new Student(3, "Andy Bernard")
     );
-
     @GetMapping("/{studentId}")
     public Student getStudent(@PathVariable Integer studentId) {
         return STUDENTS.stream()
