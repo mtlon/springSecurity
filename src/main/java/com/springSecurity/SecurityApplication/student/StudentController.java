@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("/students")
+@RequestMapping("/api/v1/students")
 public class StudentController {
     private final List<Student> STUDENTS = Arrays.asList(
             new Student(1, "Pam Beesly"),

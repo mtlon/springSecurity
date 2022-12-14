@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Arrays;
 import java.util.List;
 @RestController
-@RequestMapping("/management/students")
+@RequestMapping("/management/api/v1/students")
 public class StudentManagementController {
     private final List<Student> STUDENTS = Arrays.asList(
             new Student(1, "Pam Beesly"),
