@@ -33,10 +33,6 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "index").permitAll()
                 .antMatchers("/api/**").hasAnyRole(ApplicationUserRole.STUDENT.name())
-                .antMatchers(HttpMethod.DELETE, "/management/api/**").hasAuthority(COURSE_WRITE.getPermission())
-                .antMatchers(HttpMethod.POST, "/management/api/**").hasAuthority(COURSE_WRITE.getPermission())
-                .antMatchers(HttpMethod.PUT, "/management/api/**").hasAuthority(COURSE_WRITE.getPermission())
-                .antMatchers(HttpMethod.GET, "/management/api/**").hasAnyRole(ADMIN.name(), ADMINTRAINEE.name())
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -48,19 +44,16 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         UserDetails david = User.builder()
                 .username("david")
                 .password(passwordEncoder.encode("password"))
-//                .roles(ADMIN.name())
                 .authorities(ADMIN.grantedAuthorities())
                 .build();
         UserDetails michael = User.builder()
                 .username("michael")
                 .password(passwordEncoder.encode("password"))
-//                .roles(ADMINTRAINEE.name())
                 .authorities(ADMINTRAINEE.grantedAuthorities())
                 .build();
         UserDetails jim = User.builder()
                 .username("jim")
                 .password(passwordEncoder.encode("password"))
-//                .roles(STUDENT.name())
                 .authorities(STUDENT.grantedAuthorities())
                 .build();
 
